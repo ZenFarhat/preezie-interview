@@ -3,9 +3,11 @@ import Nav from './components/Nav/Nav'
 import quizData from './assets/data.json'
 import QuestionCard from './components/QuestionCard/Questioncard'
 import './styles/style.css'
+import useQuestionModel from '../src/models/createModel'
 
 function App() {
   console.log(quizData)
+  const questionModel = useQuestionModel()
 
   return (
     <div className='App'>

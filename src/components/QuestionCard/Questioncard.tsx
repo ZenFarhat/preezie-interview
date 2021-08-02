@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../styles/style.css'
 import { useState } from 'react'
+import useQuestionModel from '../../models/createModel'
 
 function Questioncard(props: {
   topic: string
@@ -11,18 +12,24 @@ function Questioncard(props: {
   checked: boolean
   index: number
 }) {
+  const questionModel = useQuestionModel()
+
   const [answer, setAnswer] = useState('')
   const [isDisabled, setDisabled] = useState(false)
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (answer.toLowerCase() === props.correctAnswer.toLowerCase()) {
+      questionModel.incrementScore()
       console.log('Correct answer detected')
       setAnswer('')
     } else {
       console.log('Incorrect answer detected')
       setAnswer('')
     }
+    questionModel.incrementQuestion()
+    console.log(questionModel.score)
+    console.log(questionModel.questionNumber)
     setDisabled(true)
   }
 
