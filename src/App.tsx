@@ -1,14 +1,16 @@
 import React from 'react'
+import Nav from './components/Nav/Nav'
 import quizData from './assets/data.json'
 import QuestionCard from './components/QuestionCard/Questioncard'
-import './App.css'
+import './styles/style.css'
 
 function App() {
   console.log(quizData)
 
   return (
     <div className='App'>
-      {quizData.map((question) => {
+      <Nav />
+      {quizData.map((question, i) => {
         return (
           <QuestionCard
             answerOptions={question.answerOptions ? question.answerOptions : []}
@@ -17,6 +19,7 @@ function App() {
             id={question.id}
             correctAnswer={question.correctAnswer}
             checked={false}
+            index={i + 1}
           />
         )
       })}

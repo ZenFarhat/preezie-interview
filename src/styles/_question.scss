@@ -1,0 +1,43 @@
+.question__container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form__label,
+.form__button,
+.form__text-input {
+  width: 500px;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.form__button {
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.form__text-input {
+  &:focus {
+    outline: none;
+  }
+}
