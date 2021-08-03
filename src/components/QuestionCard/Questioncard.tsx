@@ -17,6 +17,7 @@ function Questioncard(props: {
 
   const [answer, setAnswer] = useState('')
   const [isDisabled, setDisabled] = useState(false)
+  const [isCorrect, setCorrect] = useState('Correct!')
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -25,6 +26,7 @@ function Questioncard(props: {
       questionModel.incrementQuestion()
     } else {
       questionModel.incrementQuestion()
+      setCorrect('Incorrect!')
     }
     console.log(questionModel.questionNumber)
     console.log(`${questionModel.score}/5`)
@@ -71,8 +73,9 @@ function Questioncard(props: {
             }}
           />
         )}
-        <p className={`${props.hidden} answer__text`}>
-          The correct answer was: {props.correctAnswer}, You answered: {answer}
+        <p className={`${props.hidden}__answer-text answer__text`}>
+          {isCorrect} The correct answer was: {props.correctAnswer}, You
+          answered: {answer}
         </p>
         <button className='form__button' type='submit'>
           Submit Answer

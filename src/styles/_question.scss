@@ -40,7 +40,7 @@
   width: 500px;
 }
 
-.hidden {
+.hidden__answer-text {
   display: none;
 }
 
@@ -71,5 +71,23 @@
 .form__text-input {
   &:focus {
     outline: none;
+  }
+}
+
+@media (max-width: 1210px) {
+  .form__fieldset {
+    padding: 1rem;
+    border-radius: 20px;
+    height: 650px;
+    width: 350px;
+    margin-left: 60px;
+  }
+
+  .form__header {
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 350px;
+    margin-left: 60px;
+    text-align: center;
   }
 }

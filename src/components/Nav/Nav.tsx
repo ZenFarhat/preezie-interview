@@ -5,6 +5,7 @@ import '../../styles/style.css'
 function Nav() {
   return (
     <nav>
+      <p>Questions</p>
       <ul className='nav__list'>
         {quizData.map((data, i) => {
           return (

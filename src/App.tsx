@@ -2,27 +2,38 @@ import React, { useState } from 'react'
 import Nav from './components/Nav/Nav'
 import quizData from './assets/data.json'
 import QuestionCard from './components/QuestionCard/Questioncard'
-import Modal from './components/Modal/Modal'
 import './styles/style.css'
 import useQuestionModel from '../src/models/createModel'
 
 function App() {
   const questionModel = useQuestionModel()
   const [isHidden, setHidden] = useState('hidden')
+  const [modalHidden, setModalHidden] = useState('hidden')
 
   const renderResults = (questionNumber: number) => {
     if (questionNumber >= 5) {
       return (
-        <button
-          onClick={() => {
-            setHidden('')
-          }}
-        >
-          View Results
-        </button>
+        <div className='score__container'>
+          <h1 className='score'> Your score was: {questionModel.score}/5!</h1>
+          <button
+            onClick={() => {
+              setHidden('')
+              setModalHidden('')
+            }}
+            className='show__answers-btn'
+          >
+            Show Answers
+          </button>
+        </div>
       )
     } else {
-      return <h1>Complete quiz to see your results!</h1>
+      return (
+        <div className='incomplete__container'>
+          <h1 className='incomplete__quiz-text'>
+            Complete the quiz to see your results!
+          </h1>
+        </div>
+      )
     }
   }
 
@@ -46,7 +57,6 @@ function App() {
       <div className='results__container' id='results'>
         {renderResults(questionModel.questionNumber)}
       </div>
-      <Modal />
     </div>
   )
 }
