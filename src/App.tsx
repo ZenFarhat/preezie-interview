@@ -8,7 +8,6 @@ import useQuestionModel from '../src/models/createModel'
 function App() {
   const questionModel = useQuestionModel()
   const [isHidden, setHidden] = useState('hidden')
-  const [modalHidden, setModalHidden] = useState('hidden')
 
   const renderResults = (questionNumber: number) => {
     if (questionNumber >= 5) {
@@ -18,7 +17,6 @@ function App() {
           <button
             onClick={() => {
               setHidden('')
-              setModalHidden('')
             }}
             className='show__answers-btn'
           >
