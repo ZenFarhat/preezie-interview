@@ -56,7 +56,8 @@ code {
     justify-content: center;
     align-items: center;
   }
-
+}
+@media (max-width: 500px) {
   .incomplete__quiz-text {
     width: 350px;
     margin-left: 60px;
