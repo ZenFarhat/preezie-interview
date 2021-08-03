@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from './components/Nav/Nav'
 import quizData from './assets/data.json'
 import QuestionCard from './components/QuestionCard/Questioncard'
@@ -6,8 +6,24 @@ import './styles/style.css'
 import useQuestionModel from '../src/models/createModel'
 
 function App() {
-  console.log(quizData)
   const questionModel = useQuestionModel()
+  const [isHidden, setHidden] = useState('hidden')
+
+  const renderResults = (questionNumber: number) => {
+    if (questionNumber >= 5) {
+      return (
+        <button
+          onClick={() => {
+            setHidden('')
+          }}
+        >
+          View Results
+        </button>
+      )
+    } else {
+      return <h1>Complete quiz to see your results!</h1>
+    }
+  }
 
   return (
     <div className='App'>
@@ -22,9 +38,13 @@ function App() {
             correctAnswer={question.correctAnswer}
             checked={false}
             index={i + 1}
+            hidden={isHidden}
           />
         )
       })}
+      <div className='results__container' id='results'>
+        {renderResults(questionModel.questionNumber)}
+      </div>
     </div>
   )
 }

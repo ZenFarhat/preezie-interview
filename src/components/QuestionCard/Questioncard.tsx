@@ -11,6 +11,7 @@ function Questioncard(props: {
   answerOptions: string[]
   checked: boolean
   index: number
+  hidden: string
 }) {
   const questionModel = useQuestionModel()
 
@@ -21,19 +22,14 @@ function Questioncard(props: {
     e.preventDefault()
     if (answer.toLowerCase() === props.correctAnswer.toLowerCase()) {
       questionModel.incrementScore()
-      console.log('Correct answer detected')
-      setAnswer('')
+      questionModel.incrementQuestion()
     } else {
-      console.log('Incorrect answer detected')
-      setAnswer('')
+      questionModel.incrementQuestion()
     }
-    questionModel.incrementQuestion()
-    console.log(questionModel.score)
     console.log(questionModel.questionNumber)
+    console.log(`${questionModel.score}/5`)
     setDisabled(true)
   }
-
-  console.log(props)
 
   return (
     <form
@@ -45,7 +41,7 @@ function Questioncard(props: {
       id={props.id}
     >
       <h1 className='form__header'>{`${props.index}. ${props.topic}`}</h1>
-      <fieldset disabled={isDisabled}>
+      <fieldset className='form__fieldset' disabled={isDisabled}>
         {props.type === 'SingleSelect' ? (
           props.answerOptions?.map((option) => {
             return (
@@ -75,6 +71,9 @@ function Questioncard(props: {
             }}
           />
         )}
+        <p className={`${props.hidden} answer__text`}>
+          The correct answer was: {props.correctAnswer}, You answered: {answer}
+        </p>
         <button className='form__button' type='submit'>
           Submit Answer
         </button>

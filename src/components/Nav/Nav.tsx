@@ -15,6 +15,11 @@ function Nav() {
             </li>
           )
         })}
+        <li className='nav__list-item'>
+          <a href='#results' className='nav__link'>
+            Results
+          </a>
+        </li>
       </ul>
     </nav>
   )
