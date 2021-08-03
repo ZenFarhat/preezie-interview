@@ -176,6 +176,10 @@ nav {
 }
 
 @media (max-width: 1210px) {
+  .question__container {
+    margin: 50px 0;
+  }
+
   .form__fieldset {
     padding: 1rem;
     border-radius: 20px;
