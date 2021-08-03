@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Nav from './components/Nav/Nav'
 import quizData from './assets/data.json'
 import QuestionCard from './components/QuestionCard/Questioncard'
+import Modal from './components/Modal/Modal'
 import './styles/style.css'
 import useQuestionModel from '../src/models/createModel'
 
@@ -45,6 +46,7 @@ function App() {
       <div className='results__container' id='results'>
         {renderResults(questionModel.questionNumber)}
       </div>
+      <Modal />
     </div>
   )
 }
