@@ -12,6 +12,7 @@ function Questioncard(props: {
   checked: boolean
   index: number
   hidden: string
+  nextQuestion: string
 }) {
   const questionModel = useQuestionModel()
 
@@ -30,6 +31,7 @@ function Questioncard(props: {
     }
     console.log(questionModel.questionNumber)
     console.log(`${questionModel.score}/5`)
+    console.log(props.nextQuestion)
     setDisabled(true)
   }
 
@@ -77,8 +79,9 @@ function Questioncard(props: {
           {isCorrect} The correct answer was: {props.correctAnswer}, You
           answered: {answer}
         </p>
-        <button className='form__button' type='submit'>
-          Submit Answer
+
+        <button type='submit' className='form__button'>
+          <a href={`#${props.nextQuestion}`}>Submit Answer</a>
         </button>
       </fieldset>
     </form>

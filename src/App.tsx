@@ -10,7 +10,7 @@ function App() {
   const [isHidden, setHidden] = useState('hidden')
 
   const renderResults = (questionNumber: number) => {
-    if (questionNumber >= 5) {
+    if (questionNumber >= quizData.length - 1) {
       return (
         <div className='score__container'>
           <h1 className='score'> Your score was: {questionModel.score}/5!</h1>
@@ -49,6 +49,7 @@ function App() {
             checked={false}
             index={i + 1}
             hidden={isHidden}
+            nextQuestion={quizData[i + 1]?.id}
           />
         )
       })}
